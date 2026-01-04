@@ -8,15 +8,14 @@ pygame.init()
 
 pygame.display.set_caption("Platformer Game")
 
-BG_COLOR = (255, 255, 255)
 WIDTH, HEIGHT = 1000, 800
 FPS = 60
 PLAYER_VEL = 5
 
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 
-def getbackgrounds(name):
-    image = pygame.image.load(os.path.join("assets", "Backgrounds", name))
+def get_backgrounds(name):
+    image = pygame.image.load(os.path.join("assets", "Background", name))
     _, _, width, height = image.get_rect()
     tiles = []  
 
@@ -27,8 +26,16 @@ def getbackgrounds(name):
 
     return tiles, image
 
+
+def draw(window, background, bg_image):
+    for tile in background:
+        window.blit(bg_image, tile)
+
+    pygame.display.update()
+
 def main(window):
     clock = pygame.time.Clock()
+    background, bg_image = get_backgrounds("Purple.png")
 
     run = True
     while run:
@@ -39,6 +46,8 @@ def main(window):
                 run = False
                 break
     
+        draw(window, background, bg_image)
+
     pygame.quit()
     quit()
 
