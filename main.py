@@ -16,15 +16,17 @@ window = pygame.display.set_mode((WIDTH, HEIGHT))
 
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, x, y):
-        super().__init__()
-        self.image = pygame.Surface((50, 50))
-        self.image.fill((255, 0, 0))
-        self.rect = self.image.get_rect()
-        self.rect.topleft = (x, y)
+    COLOR = (255, 0, 0)
 
-    def draw(self, window):
-        window.blit(self.image, (self.rect.x, self.rect.y))
+    def __init__(self, x, y, width, height):
+        self.rect = pygame.Rect((x, y, width, height))
+        self.x_vel = 0
+        self.y_vel = 0
+        self.mask = None
+
+    def draw(self, dx, dy):
+        self.rect.x += dx
+        self.rect.y += dy
 
 
 def get_backgrounds(name):
