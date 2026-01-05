@@ -14,6 +14,19 @@ PLAYER_VEL = 5
 
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 
+
+class Player(pygame.sprite.Sprite):
+    def __init__(self, x, y):
+        super().__init__()
+        self.image = pygame.Surface((50, 50))
+        self.image.fill((255, 0, 0))
+        self.rect = self.image.get_rect()
+        self.rect.topleft = (x, y)
+
+    def draw(self, window):
+        window.blit(self.image, (self.rect.x, self.rect.y))
+
+
 def get_backgrounds(name):
     image = pygame.image.load(os.path.join("assets", "Background", name))
     _, _, width, height = image.get_rect()
