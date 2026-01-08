@@ -75,6 +75,16 @@ def draw(window, background, bg_image, player):
     pygame.display.update()
 
 
+def handle_movement(player):
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_LEFT] or keys[pygame.K_a]:
+        player.move_left(PLAYER_VEL)
+    elif keys[pygame.K_RIGHT] or keys[pygame.K_d]:
+        player.move_right(PLAYER_VEL)
+    else:
+        player.x_vel = 0
+
+
 def main(window):
     clock = pygame.time.Clock()
     background, bg_image = get_backgrounds("Purple.png")
