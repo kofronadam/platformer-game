@@ -24,6 +24,8 @@ class Player(pygame.sprite.Sprite):
         self.x_vel = 0
         self.y_vel = 0
         self.mask = None
+        self.direction = "left"
+        self.animation_count = 0
 
     def draw(self, dx, dy):
         self.rect.x += dx
@@ -37,7 +39,18 @@ class Player(pygame.sprite.Sprite):
 
     def move_right(self, vel):
         self.x_vel = vel
+        if self.direction != "right":
+            self.direction = "right"
+            self.animation_count = 0
+
+    def loop(self, fps):
+        self.move(self.x_vel, self.y_vel)    
+
+    def draw(self, win):
+        pygame.draw.rect(window, self.COLOR, self.rect)
+
         
+
 
 def get_backgrounds(name):
     image = pygame.image.load(os.path.join("assets", "Background", name))
