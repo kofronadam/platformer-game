@@ -1,6 +1,7 @@
 import os
 import random
 import math
+from turtle import left
 import pygame
 from os import listdir
 from os.path import isfile, join
@@ -30,10 +31,13 @@ class Player(pygame.sprite.Sprite):
 
     def move_left(self, vel):
         self.x_vel = -vel
+        if self.direction != "left":
+            self.direction = left
+            self.animation_count = 0
 
     def move_right(self, vel):
         self.x_vel = vel
-
+        
 
 def get_backgrounds(name):
     image = pygame.image.load(os.path.join("assets", "Background", name))
