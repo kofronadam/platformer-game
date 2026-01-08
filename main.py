@@ -77,12 +77,12 @@ def draw(window, background, bg_image, player):
 
 def handle_movement(player):
     keys = pygame.key.get_pressed()
+
+    player.x_vel = 0
     if keys[pygame.K_LEFT] or keys[pygame.K_a]:
         player.move_left(PLAYER_VEL)
     elif keys[pygame.K_RIGHT] or keys[pygame.K_d]:
         player.move_right(PLAYER_VEL)
-    else:
-        player.x_vel = 0
 
 
 def main(window):
@@ -100,6 +100,9 @@ def main(window):
                 run = False
                 break
     
+
+        player.loop(FPS)
+        handle_movement(player)
         draw(window, background, bg_image, player)
 
     pygame.quit()
