@@ -28,6 +28,12 @@ class Player(pygame.sprite.Sprite):
         self.rect.x += dx
         self.rect.y += dy
 
+    def move_left(self, vel):
+        self.x_vel = -vel
+
+    def move_right(self, vel):
+        self.x_vel = vel
+
 
 def get_backgrounds(name):
     image = pygame.image.load(os.path.join("assets", "Background", name))
