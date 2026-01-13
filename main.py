@@ -34,6 +34,10 @@ def load_sprite_sheets(dir1, dir2, width, height, direction=False):
             surface.blit(sprite_sheet, (0, 0), rect)
             sprites.append(pygame.transform.scale2x(surface))
 
+        if direction:
+            all_sprites[img.replace(".png", "") + "_right"] = sprites
+            all_sprites[img.replace(".png", "") + "_left"] = flip(sprites)
+
 
 class Player(pygame.sprite.Sprite):
     COLOR = (255, 0, 0)
