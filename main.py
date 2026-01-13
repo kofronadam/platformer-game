@@ -27,6 +27,10 @@ def load_sprite_sheets(dir1, dir2, width, height, direction=False):
     for img in images:
         sprite_sheet = pygame.image.load(join(path, img)).convert_alpha()
 
+        sprites = []
+        for i in range(sprite_sheet.get_width() // width):
+            
+
 
 class Player(pygame.sprite.Sprite):
     COLOR = (255, 0, 0)
