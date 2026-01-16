@@ -39,6 +39,8 @@ def load_sprite_sheets(dir1, dir2, width, height, direction=False):
             all_sprites[img.replace(".png", "") + "_left"] = flip(sprites)
         else:
             all_sprites[img.replace(".png", "")] = sprites
+
+    return all_sprites
             
 
 class Player(pygame.sprite.Sprite):
@@ -82,10 +84,8 @@ class Player(pygame.sprite.Sprite):
         self.fall_count += 1    
 
     def draw(self, win):
-        self.sprite = self.SPRITES["idle"][0]
+        self.sprite = self.SPRITES["idle_" + self.direction][0]
         win.blit(self.sprite, (self.rect.x, self.rect.y))
-
-
 
 
 def get_backgrounds(name):
