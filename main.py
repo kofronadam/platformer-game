@@ -86,9 +86,9 @@ class Player(pygame.sprite.Sprite):
         self.update_sprite()
 
     def update_sprite(self):
-        sprite_sheet = "idle_"
+        sprite_sheet = "idle"
         if self.x_vel != 0:
-            sprite_sheet = "run_"
+            sprite_sheet = "run"
 
         sprite_sheet_name = sprite_sheet + "_" + self.direction
         sprites = self.SPRITES[sprite_sheet_name] 
@@ -97,7 +97,6 @@ class Player(pygame.sprite.Sprite):
         self.animation_count += 1
 
     def draw(self, win):
-        self.sprite = self.SPRITES["idle_" + self.direction][0]
         win.blit(self.sprite, (self.rect.x, self.rect.y))
 
 
