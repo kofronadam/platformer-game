@@ -96,6 +96,13 @@ class Player(pygame.sprite.Sprite):
         self.sprite = sprites[sprite_index]
         self.animation_count += 1
 
+
+    def mask(self):
+        self.rect = self.sprite.get_rect(topleft=(self.rect.x, self.rect.y))
+        self.mask = pygame.mask.from_surface(self.sprite)
+        
+
+
     def draw(self, win):
         win.blit(self.sprite, (self.rect.x, self.rect.y))
 
