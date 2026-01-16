@@ -37,6 +37,8 @@ def load_sprite_sheets(dir1, dir2, width, height, direction=False):
         if direction:
             all_sprites[img.replace(".png", "") + "_right"] = sprites
             all_sprites[img.replace(".png", "") + "_left"] = flip(sprites)
+        else:
+            all_sprites[img.replace(".png", "")] = sprites
             
 
 class Player(pygame.sprite.Sprite):
