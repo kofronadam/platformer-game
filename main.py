@@ -50,6 +50,7 @@ class Player(pygame.sprite.Sprite):
     ANIMATION_DELAY = 5
 
     def __init__(self, x, y, width, height):
+        super().__init__()
         self.rect = pygame.Rect((x, y, width, height))
         self.x_vel = 0
         self.y_vel = 0
@@ -95,16 +96,23 @@ class Player(pygame.sprite.Sprite):
         sprite_index = (self.animation_count //self.ANIMATION_DELAY) % len(sprites)  
         self.sprite = sprites[sprite_index]
         self.animation_count += 1
+        self.update()
 
 
-    def mask(self):
+    def update():
         self.rect = self.sprite.get_rect(topleft=(self.rect.x, self.rect.y))
         self.mask = pygame.mask.from_surface(self.sprite)
-        
 
 
     def draw(self, win):
         win.blit(self.sprite, (self.rect.x, self.rect.y))
+
+
+class Object(pygame.sprite.Sprite):
+    def __init__(self, x, y, width, height, color):
+        super().__init__()
+        self.rect = pygame.Rect((x, y, width, height))
+        self.image = pygame.Surface((width, height), pygame.SRCALPHA)
 
 
 def get_backgrounds(name):
