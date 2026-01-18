@@ -42,6 +42,9 @@ def load_sprite_sheets(dir1, dir2, width, height, direction=False):
 
     return all_sprites
             
+def get_block(size):
+    path = join("assets", "Terrain", "Terrain.png")
+    
 
 class Player(pygame.sprite.Sprite):
     COLOR = (255, 0, 0)
