@@ -113,6 +113,12 @@ class Object(pygame.sprite.Sprite):
         super().__init__()
         self.rect = pygame.Rect((x, y, width, height))
         self.image = pygame.Surface((width, height), pygame.SRCALPHA)
+        self.width = width
+        self.height = height
+        self.name = name
+
+    def draw(self, win):
+        win.blit(self.image, (self.rect.x, self.rect.y))
 
 
 def get_backgrounds(name):
