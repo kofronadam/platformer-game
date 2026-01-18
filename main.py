@@ -120,6 +120,13 @@ class Object(pygame.sprite.Sprite):
     def draw(self, win):
         win.blit(self.image, (self.rect.x, self.rect.y))
 
+class Block(Object):
+    def _init_(self, x, y, size):
+        super().__init__(x, y, size, size)
+        block = load_block(size)
+        self.image.blit(block, (0, 0))
+        self.mask = pygame.mask.from_surface(self.image)
+
 
 def get_backgrounds(name):
     image = pygame.image.load(os.path.join("assets", "Background", name))
