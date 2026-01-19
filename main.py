@@ -94,6 +94,17 @@ class Player(pygame.sprite.Sprite):
         self.fall_count += 1
         self.update_sprite()
 
+
+    def landed(self):
+        self.fall_count = 0
+        self.y_vel = 0
+        self.jump_count = 0
+
+    def hit_head(self):
+        self.count = 0
+        self.y_vel *= -1
+
+
     def update_sprite(self):
         sprite_sheet = "idle"
         if self.x_vel != 0:
@@ -161,8 +172,24 @@ def draw(window, background, bg_image, player, objects):
 
     pygame.display.update()
 
+def hadle_vertical_collisions(player, objects, dy):
+    collided_objects = []
+    for obj in objects:
+        if pygame.sprite.collide_mask(player, obj):
+            if dy > 0:
+                player.rect.bottom = obj.rect.top
+                player.landed()
+            elif dy < 0:
+                player.rext.top = obj.rect.bottom    
+                player.hit_head()
 
-def handle_movement(player):
+
+            collided_objects.append(obj)
+    
+    return collided_objects
+
+
+def handle_movement(player, objects):
     keys = pygame.key.get_pressed()
 
     player.x_vel = 0
@@ -179,7 +206,8 @@ def main(window):
     block_size = 96
 
     player = Player(100, 100, 50, 50)
-    blocks = [Block(0, HEIGHT - block_size, block_size),]
+    floor = [Block(i * block_size, HEIGHT - block_size, block_size) 
+             for i in range(-WIDTH // block_size, (WIDTH * 2) // block_size)]
 
     run = True
     while run:
@@ -193,7 +221,7 @@ def main(window):
 
         player.loop(FPS)
         handle_movement(player)
-        draw(window, background, bg_image, player, blocks)
+        draw(window, background, bg_image, player, floor)
 
     pygame.quit()
     quit()
