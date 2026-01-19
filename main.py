@@ -88,7 +88,7 @@ class Player(pygame.sprite.Sprite):
             self.animation_count = 0
 
     def loop(self, fps):
-        #self.y_vel += min(1, (self.fall_count / fps) * self.GRAVITY)
+        self.y_vel += min(1, (self.fall_count / fps) * self.GRAVITY)
         self.move(self.x_vel, self.y_vel)
 
         self.fall_count += 1
@@ -198,6 +198,7 @@ def handle_movement(player, objects):
     elif keys[pygame.K_RIGHT] or keys[pygame.K_d]:
         player.move_right(PLAYER_VEL)
 
+    hadle_vertical_collisions(player, objects, player.y_vel)
 
 def main(window):
     clock = pygame.time.Clock()
@@ -220,7 +221,7 @@ def main(window):
     
 
         player.loop(FPS)
-        handle_movement(player)
+        handle_movement(player, floor)
         draw(window, background, bg_image, player, floor)
 
     pygame.quit()
