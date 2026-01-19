@@ -107,7 +107,7 @@ class Player(pygame.sprite.Sprite):
         self.update()
 
 
-    def update():
+    def update(self):
         self.rect = self.sprite.get_rect(topleft=(self.rect.x, self.rect.y))
         self.mask = pygame.mask.from_surface(self.sprite)
 
@@ -117,7 +117,7 @@ class Player(pygame.sprite.Sprite):
 
 
 class Object(pygame.sprite.Sprite):
-    def __init__(self, x, y, width, height, color):
+    def __init__(self, x, y, width, height, name=None):
         super().__init__()
         self.rect = pygame.Rect((x, y, width, height))
         self.image = pygame.Surface((width, height), pygame.SRCALPHA)
