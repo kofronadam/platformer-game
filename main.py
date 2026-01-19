@@ -46,7 +46,7 @@ def get_block(size):
     path = join("assets", "Terrain", "Terrain.png")
     image = pygame.image.load(path).convert_alpha()
     surface = pygame.Surface((size, size), pygame.SRCALPHA, 32)
-    rect = pygame.Rect(96, 0, size, size)
+    rect = pygame.Rect(96, 0, size, size)       # Get block at (96, 0)
     surface.blit(image, (0,0), rect)
     return pygame.transform.scale2x(surface)
     
@@ -129,9 +129,9 @@ class Object(pygame.sprite.Sprite):
         win.blit(self.image, (self.rect.x, self.rect.y))
 
 class Block(Object):
-    def _init_(self, x, y, size):
+    def __init__(self, x, y, size):
         super().__init__(x, y, size, size)
-        block = load_block(size)
+        block = get_block(size)
         self.image.blit(block, (0, 0))
         self.mask = pygame.mask.from_surface(self.image)
 
