@@ -55,7 +55,7 @@ class Player(pygame.sprite.Sprite):
     COLOR = (255, 0, 0)
     GRAVITY = 1
     SPRITES = load_sprite_sheets('MainCharacters', 'MaskDude', 32, 32, True)
-    ANIMATION_DELAY = 5
+    ANIMATION_DELAY = 3
 
     def __init__(self, x, y, width, height):
         super().__init__()
@@ -73,7 +73,7 @@ class Player(pygame.sprite.Sprite):
         self.animation_count = 0
         self.jump_count += 1
         if self.jump_count == 1:
-            self.count = 0
+            self.fall_count = 0
 
     def draw(self, dx, dy):
         self.rect.x += dx
@@ -226,6 +226,10 @@ def main(window):
             if event.type == pygame.QUIT:
                 run = False
                 break
+        
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE and player.jump_count < 2:
+                    player.jump()
     
 
         player.loop(FPS)
