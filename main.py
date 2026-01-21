@@ -204,6 +204,21 @@ def hadle_vertical_collisions(player, objects, dy):
     return collided_objects
 
 
+def collide(player, objects, dx):
+    player.move(dx, 0)
+    player.update()
+    collided_objects = None
+    for obj in objects:
+        if pygame.sprite.collide_mask(player,obj):
+            colidded_objects = obj
+            break
+
+    player.move(-dx, 0)
+    player.update()
+    return collided_objects
+
+
+
 def handle_movement(player, objects):
     keys = pygame.key.get_pressed()
 
