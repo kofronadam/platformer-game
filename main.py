@@ -218,7 +218,6 @@ def collide(player, objects, dx):
     return collided_objects
 
 
-
 def handle_movement(player, objects):
     keys = pygame.key.get_pressed()
 
