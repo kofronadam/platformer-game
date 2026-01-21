@@ -243,7 +243,7 @@ def hadle_vertical_collisions(player, objects, dy):
                 player.rect.bottom = obj.rect.top
                 player.landed()
             elif dy < 0:
-                player.rext.top = obj.rect.bottom    
+                player.rect.top = obj.rect.bottom    
                 player.hit_head()
 
 
@@ -258,7 +258,7 @@ def collide(player, objects, dx):
     collided_objects = None
     for obj in objects:
         if pygame.sprite.collide_mask(player,obj):
-            colidded_objects = obj
+            collided_objects = obj
             break
 
     player.move(-dx, 0)
