@@ -23,16 +23,17 @@ Before running the game, ensure you have Python installed on your system. You wi
 pip install pygame
 
 🎮 How to Play
-Clone the repository:
 
+
+Clone the repository:
 git clone [https://github.com/kofronadam/platformer-game.git](https://github.com/kofronadam/platformer-game.git)
 
-Navigate to the project folder:
 
+Navigate to the project folder:
 cd platformer-game
 
-Run the game:
 
+Run the game:
 python main.py
 
 
@@ -46,6 +47,7 @@ assets/: Directory containing images, sprites, and sounds used in the game.
 README.md: Project documentation.
 
 
+
 🗺️ Roadmap / Future Improvements
 
 [ ] Add dynamic terrain generation.
@@ -55,6 +57,7 @@ README.md: Project documentation.
 [ ] Create multiple levels with increasing difficulty.
 
 [ ] Add background music and sound effects.
+
 
 
 👤 Author
