@@ -294,10 +294,17 @@ def main(window):
     player = Player(100, 100, 50, 50)
     fire = Fire(-480, HEIGHT - block_size - 64, 16, 32)
     fire2 = Fire(-1050, HEIGHT - block_size - 64, 16, 32)
+    fire3 = Fire(850, HEIGHT - block_size - 64, 16, 32)
+    fire4 = Fire(1850, HEIGHT - block_size - 64, 16, 32)
+    fire5 = Fire(-1200, HEIGHT - block_size - 64, 16, 32)
 
 
     fire.on()
     fire2.on()
+    fire3.on()
+    fire4.on()
+    fire5.on()
+
     floor = [Block(i * block_size, HEIGHT - block_size, block_size) 
              for i in range(-WIDTH // block_size, (WIDTH * 2) // block_size)]
     objects = [*floor, Block(0, HEIGHT - block_size * 2, block_size),
@@ -316,7 +323,7 @@ def main(window):
                Block(block_size * -6, HEIGHT - block_size * 3, block_size), Block(block_size * -6, HEIGHT - block_size * 2, block_size),
 
 
-               fire, fire2 ]
+               fire, fire2, fire3, fire4, fire5 ]
                
     offset_x = 0
     scroll_area_width = 200
@@ -336,7 +343,13 @@ def main(window):
     
 
         player.loop(FPS)
+        
         fire.loop()
+        fire2.loop()
+        fire3.loop()
+        fire4.loop()    
+        fire5.loop()
+
         handle_movement(player, objects)
         draw(window, background, bg_image, player, objects, offset_x)
 
